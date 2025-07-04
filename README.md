@@ -1,50 +1,54 @@
-# codespaces-quickstart
-Get started with Rasa in the browser using GitHub Codespaces.
+# HireInfluencer Platform
 
-### Steps
+This repository contains a basic skeleton for the HireInfluencer website. It includes a React frontend with a small 3D demo and an Express + GraphQL backend. The frontend now supports client-side routing and GitHub Pages deployment.
 
-1. **Create a Codespace:**
-   - Click on the green "Code" button on this page, then scroll down to "Codespaces".
-   - Click on "Create codespace on main".
+## Getting Started
 
-2. **Set Up Environment:**
-   - In the codespace, open the `.env` file from this repo and add your license key to that file.
-     ```
-     RASA_PRO_LICENSE='your_rasa_pro_license_key_here'
-     ```
-   - Set this environment variables by running 
-     ```
-     source .env
-     ```
-   - Activate your python environment by running
-     ```
-     source .venv/bin/activate
-     ```
+### Prerequisites
+- Node.js 18 or later
 
-3. **Initialize a New Project:**
-   - In the terminal, run:
-     ```
-     rasa init --template tutorial
-     ```
-     and follow the instructions.
-
-4. **Train the Model:**
-   - In the terminal, run:
-     ```
-     rasa train
-     ```
-
-5. **Talk to your Bot:**
-   - In the terminal, run
-     ```
-     rasa inspect
-     ```
-     GitHub will show a notification, click on the green button to view the inspector where you can chat with your assistant.
-
-6. **Run Custom Actions:**
-  In Rasa 3.10 and later, custom actions are automatically run as part of your running assistant. To double-check that this is set up correctly, ensure that your `endpoints.yml` file contains the following configuration:
+### Installation
+1. Install server dependencies:
+   ```bash
+   cd server
+   npm install
    ```
-   action_endpoint:
-      actions_module: "actions" # path to your actions package
-    ```
-   Then re-run your assistant via `rasa inspect` every time you make changes to your custom actions.
+2. Install client dependencies:
+   ```bash
+   cd ../client
+   npm install
+   ```
+
+### Running the Development Servers
+- **Backend**
+  ```bash
+  cd server
+  npm start
+  ```
+  The GraphQL endpoint will be available at `http://localhost:4000/graphql`.
+
+- **Frontend**
+  ```bash
+  cd client
+  npm run dev
+  ```
+  Open your browser to the printed local URL to view the React app.
+
+### Building the Frontend
+To create a production build:
+```bash
+cd client
+npm run build
+```
+The build output will be in `client/dist`.
+
+### Deploying to GitHub Pages
+Ensure the `homepage` field in `client/package.json` is set to your repository URL.
+Then run:
+```bash
+cd client
+npm run deploy
+```
+This will build the app and push the contents of `dist` to the `gh-pages` branch so the site is available at `https://<your-username>.github.io/RasaOutreachIT/`.
+
+This setup serves as a starting point for implementing the full HireInfluencer platform described in `HireInfluencer_Plan.md`.
