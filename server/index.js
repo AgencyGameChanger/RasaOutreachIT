@@ -7,14 +7,27 @@ async function start() {
   app.use(cors());
 
   const typeDefs = gql`
+    type Creator {
+      id: ID!
+      name: String!
+      niche: String!
+    }
+
     type Query {
       hello: String
+      creators: [Creator!]!
     }
   `;
 
+  const creators = [
+    { id: '1', name: 'Alice Influencer', niche: 'Tech' },
+    { id: '2', name: 'Bob Creator', niche: 'Lifestyle' }
+  ];
+
   const resolvers = {
     Query: {
-      hello: () => 'Hello world!'
+      hello: () => 'Hello world!',
+      creators: () => creators
     }
   };
 

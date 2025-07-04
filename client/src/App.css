@@ -40,3 +40,22 @@
 .read-the-docs {
   color: #888;
 }
+
+nav .nav {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  padding: 0;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+nav a {
+  color: #646cff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
